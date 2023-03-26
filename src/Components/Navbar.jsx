@@ -20,11 +20,10 @@ import {
   styled,
 } from "@mui/material";
 import { useState } from "react";
-import { LinkOffTwoTone } from "@mui/icons-material";
 
 export const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState({
-    left: false,
+    right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -45,7 +44,7 @@ export const Navbar = () => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <ListMenu>
         {["Home", "Features", "Services", "Listed", "Contact"].map(
           (text, index) => (
             <ListItem key={text} disablePadding>
@@ -62,9 +61,25 @@ export const Navbar = () => {
             </ListItem>
           )
         )}
-      </List>
+        <NavLink variant="body2">Sign Up</NavLink>
+        <CustomButton
+          backgroundColor="#0F1B4C"
+          color="#fff"
+          buttonText="Register"
+        />
+      </ListMenu>
     </Box>
   );
+
+
+  const ListMenu = styled(List)(({theme}) => ({
+    display: "flex",
+    gap: "1rem",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection:  "column",
+  }))
+
 
   const NavLink = styled(Typography)(({ theme }) => ({
     fontSize: "14px",
@@ -89,7 +104,7 @@ export const Navbar = () => {
   const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
     cursor: "pointer",
     display: "none",
-    marginRight: theme.spacing(2),
+    marginright: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
       display: "block",
     },
@@ -108,41 +123,32 @@ export const Navbar = () => {
   const NavbarLogo = styled("img")(({ theme }) => ({
     cursor: "pointer",
     [theme.breakpoints.down("md")]: {
-      display: "none",
+      display: "block",
     },
   }));
 
+  const ButtonItem = styled(Box)(({theme}) => ({
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "1rem",
+    marginright: theme.spacing(2),
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
+  }))
+
   return (
     <NavbarContainer>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "2.5rem",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <CustomMenuIcon onClick={toggleDrawer("left", true)} />
-          <Drawer
-            anchor="left"
-            open={mobileMenu["left"]}
-            onClose={toggleDrawer("left", false)}
-          >
-            {list("left")}
-          </Drawer>
-          <NavbarLogo src={logoImg} alt="logo" />
-        </Box>
-
-        <NavbarLinksBox>
-          <NavLink variant="body2">Home</NavLink>
-          <NavLink variant="body2">Features</NavLink>
-          <NavLink variant="body2">Services</NavLink>
-          <NavLink variant="body2">Listed</NavLink>
-          <NavLink variant="body2">Contact</NavLink>
-        </NavbarLinksBox>
-      </Box>
-
+      <NavbarLogo src={logoImg} alt="logo" />
+      <NavbarLinksBox>
+        <NavLink variant="body2">Home</NavLink>
+        <NavLink variant="body2">Features</NavLink>
+        <NavLink variant="body2">Services</NavLink>
+        <NavLink variant="body2">Listed</NavLink>
+        <NavLink variant="body2">Contact</NavLink>
+      </NavbarLinksBox>
       <Box
         sx={{
           display: "flex",
@@ -151,12 +157,34 @@ export const Navbar = () => {
           gap: "1rem",
         }}
       >
+        <ButtonItem>
         <NavLink variant="body2">Sign Up</NavLink>
         <CustomButton
           backgroundColor="#0F1B4C"
           color="#fff"
           buttonText="Register"
         />
+        </ButtonItem>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "2.5rem",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <CustomMenuIcon onClick={toggleDrawer("right", true)} />
+            <Drawer
+              anchor="right"
+              open={mobileMenu["right"]}
+              onClose={toggleDrawer("right", false)}
+            >
+              {list("right")}
+            </Drawer>
+          </Box>
+        </Box>
       </Box>
     </NavbarContainer>
   );
