@@ -7,6 +7,8 @@ import Hero from "./Components/Hero";
 import Properties from "./Components/Properties";
 import ScrollReveal from "scrollreveal";
 import { useEffect } from "react";
+import BacktoTop from './Components/BacktoTop';
+
 
 function App() {
   useEffect(() => {
@@ -34,9 +36,14 @@ function App() {
     );
   }, []);
 
+  
+
+
+
   return (
     <>
       <Hero />
+      <BacktoTop/>
       <Companies />
       <Guide />
       <Properties />
