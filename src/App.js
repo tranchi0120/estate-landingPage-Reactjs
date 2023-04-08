@@ -10,6 +10,9 @@ import { useEffect } from "react";
 import BacktoTop from './Components/BacktoTop';
 
 
+
+
+
 function App() {
   useEffect(() => {
     const sr = ScrollReveal({
@@ -36,14 +39,14 @@ function App() {
     );
   }, []);
 
-  
 
 
 
   return (
+
     <>
       <Hero />
-      <BacktoTop/>
+      <BacktoTop />
       <Companies />
       <Guide />
       <Properties />
@@ -51,6 +54,7 @@ function App() {
       <GetStarted />
       <Footer />
     </>
+
   );
 }
 

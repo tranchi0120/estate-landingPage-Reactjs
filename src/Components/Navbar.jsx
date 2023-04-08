@@ -12,6 +12,8 @@ import { Container } from "@mui/system";
 import CustomButton from "./CustomButton";
 import {
   Drawer,
+  FormControlLabel,
+  FormGroup,
   List,
   ListItem,
   ListItemButton,
@@ -72,12 +74,12 @@ export const Navbar = () => {
   );
 
 
-  const ListMenu = styled(List)(({theme}) => ({
+  const ListMenu = styled(List)(({ theme }) => ({
     display: "flex",
     gap: "1rem",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection:  "column",
+    flexDirection: "column",
   }))
 
 
@@ -127,7 +129,7 @@ export const Navbar = () => {
     },
   }));
 
-  const ButtonItem = styled(Box)(({theme}) => ({
+  const ButtonItem = styled(Box)(({ theme }) => ({
     cursor: "pointer",
     display: "flex",
     justifyContent: "center",
@@ -138,6 +140,10 @@ export const Navbar = () => {
       display: "none",
     },
   }))
+
+
+
+
 
   return (
     <NavbarContainer>
@@ -158,14 +164,13 @@ export const Navbar = () => {
         }}
       >
         <ButtonItem>
-        <NavLink variant="body2">Sign Up</NavLink>
-        <CustomButton
-          backgroundColor="#0F1B4C"
-          color="#fff"
-          buttonText="Register"
-        />
+          <NavLink variant="body2">Sign Up</NavLink>
+          <CustomButton
+            backgroundColor="#0F1B4C"
+            color="#fff"
+            buttonText="Register"
+          />
         </ButtonItem>
-
         <Box
           sx={{
             display: "flex",
@@ -185,6 +190,7 @@ export const Navbar = () => {
             </Drawer>
           </Box>
         </Box>
+      
       </Box>
     </NavbarContainer>
   );
